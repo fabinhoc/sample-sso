@@ -31,6 +31,15 @@ const menus: MenuType[] = [
     icon: "las la-users",
     routeName: "users.index",
   },
+  {
+    label: {
+      key: "role",
+      plural: 2,
+    },
+    url: "roles.index",
+    icon: "las la-user-shield",
+    routeName: "roles.index",
+  },
 ];
 
 const logout = () => {

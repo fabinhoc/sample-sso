@@ -1,4 +1,7 @@
-import { TranslateLabelType } from "./TranslateLabel.type";
+interface TranslateLabelType {
+  key: string;
+  plural?: number | null;
+}
 
 export interface MenuType {
   label: TranslateLabelType;

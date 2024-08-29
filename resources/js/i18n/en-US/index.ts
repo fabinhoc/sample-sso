@@ -1,23 +1,42 @@
 export default {
   dashboard: "Dashboard",
   user: "User | Users",
+  role: "Role | Roles",
   page: {
     users: {
       new: "New user",
     },
+    roles: {
+      new: "New role",
+    },
   },
   components: {
-    usersTable: {
-      name: "Name",
-      email: "Email",
-      emailVerifiedAt: "Email verified",
-      confirmed: "Confirmed",
-      unconfirmed: "Unconfirmed",
-      actions: "Actions",
+    users: {
+      usersTable: {
+        name: "Name",
+        email: "Email",
+        emailVerifiedAt: "Email verified",
+        confirmed: "Confirmed",
+        unconfirmed: "Unconfirmed",
+        actions: "Actions",
+      },
+      gridFilters: {
+        confirmed: "Confirmed",
+        unconfirmed: "Unconfirmed",
+        name: "Name",
+        email: "Email",
+      },
     },
-    gridFilters: {
-      confirmed: "Confirmed",
-      unconfirmed: "Unconfirmed",
+    roles: {
+      rolesTable: {
+        name: "Name",
+        actions: "Actions",
+        application: "App",
+      },
+      gridFilters: {
+        name: "Name",
+        application: "App",
+      },
     },
   },
 

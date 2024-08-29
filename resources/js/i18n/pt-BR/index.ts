@@ -1,23 +1,42 @@
 export default {
   dashboard: "Dashboard",
   user: "Usuário | Usuários",
+  role: "Papel | Papéis",
   page: {
     users: {
-      new: "New user",
+      new: "Novo usuário",
+    },
+    roles: {
+      new: "Novo papel",
     },
   },
   components: {
-    usersTable: {
-      name: "Nome",
-      email: "E-mail",
-      emailVerifiedAt: "Email Confirmado",
-      confirmed: "Confirmado",
-      unconfirmed: "Não confirmado",
-      actions: "Ações",
+    users: {
+      usersTable: {
+        name: "Nome",
+        email: "E-mail",
+        emailVerifiedAt: "Email Confirmado",
+        confirmed: "Confirmado",
+        unconfirmed: "Não confirmado",
+        actions: "Ações",
+      },
+      gridFilters: {
+        confirmed: "Confirmado",
+        unconfirmed: "Não confirmado",
+        name: "Nome",
+        email: "E-mail",
+      },
     },
-    gridFilters: {
-      confirmed: "Confirmado",
-      unconfirmed: "Não confirmado",
+    roles: {
+      rolesTable: {
+        name: "Nome",
+        actions: "Ações",
+        application: "App",
+      },
+      gridFilters: {
+        name: "Nome",
+        application: "App",
+      },
     },
   },
 

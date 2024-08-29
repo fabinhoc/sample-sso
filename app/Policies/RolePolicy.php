@@ -11,10 +11,10 @@ class RolePolicy
     /**
      * Determine whether the user can view any models.
      */
-    // public function viewAny(User $user): bool
-    // {
-    //     return $user->isSuperUser() || $user->isTenantAdmin() || $user->isTenantSupervisor();
-    // }
+    public function viewAny(User $user): bool
+    {
+        return $user->isSuperUser() || $user->isTenantAdmin() || $user->isTenantSupervisor();
+    }
 
     /**
      * Determine whether the user can view the model.

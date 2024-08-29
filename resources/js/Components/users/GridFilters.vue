@@ -17,11 +17,11 @@ const filters: Ref<GridUserFilterType> = ref({
 
 const list = computed(() => [
   {
-    title: t("components.gridFilters.confirmed"),
+    title: t("components.users.gridFilters.confirmed"),
     value: 1,
   },
   {
-    title: t("components.gridFilters.unconfirmed"),
+    title: t("components.users.gridFilters.unconfirmed"),
     value: 0,
   },
 ]);
@@ -37,8 +37,8 @@ const setFilters = () => {
     <td>
       <v-text-field
         v-model="filters.name"
-        label="Name"
-        placeholder="name"
+        :label="$t('components.users.gridFilters.name')"
+        :placeholder="$t('components.users.gridFilters.name')"
         class="mt-2 mb-n4"
         dense
         @blur="setFilters"
@@ -49,8 +49,8 @@ const setFilters = () => {
     <td>
       <v-text-field
         v-model="filters.email"
-        label="Email"
-        placeholder="Email"
+        :label="$t('components.users.gridFilters.email')"
+        :placeholder="$t('components.users.gridFilters.email')"
         class="mt-2 mb-n4"
         dense
         @blur="setFilters"
@@ -69,6 +69,7 @@ const setFilters = () => {
         @update:modelValue="setFilters"
       />
     </td>
+    <td />
     <td />
   </tr>
 </template>

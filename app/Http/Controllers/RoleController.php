@@ -2,16 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Inertia\Inertia;
 
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        Gate::authorize('viewAny', Role::class);
+        $perPage = (isset($request->itemsPerPage)) ? $request->itemsPerPage : 3;
+        $column = (isset($request->sortBy) && !empty($request->sortBy)) ? $request->sortBy : 'id';
+        $direction = (isset($request->sortDesc) && filter_var($request->sortDesc, FILTER_VALIDATE_BOOLEAN)) ? 'DESC' : 'ASC';
+
+        $roles = Role::with(['application'])->filter($request->all())->orderBy($column, $direction)->paginate($perPage);
+
+        return Inertia::render('Role/Roles', [
+            'roles' => $roles,
+        ]);
     }
 
     /**

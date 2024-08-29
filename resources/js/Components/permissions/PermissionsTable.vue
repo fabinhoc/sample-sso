@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { UserType } from "@/types/User.type";
 import { ref, defineProps, defineEmits } from "vue";
-import GridFilters from "@/Components/users/GridFilters.vue";
-import { GridUserFilterType } from "@/types/filters/GridUserFilter.type";
+import GridFilters from "@/Components/permissions/GridFilters.vue";
+import { GridPermissionFilterType } from "@/types/filters/GridPermissionFilter.type";
+import { PermissionType } from "@/types/Permission.type";
 
 defineProps<{
-  users: Array<UserType>;
+  permissions: Array<PermissionType>;
   loading: boolean;
   totalItems: number;
   itemsPerPage: number;
 }>();
 
 const emit = defineEmits<{
-  handleFilters: [filters: GridUserFilterType];
+  handleFilters: [filters: GridPermissionFilterType];
   updatedOptions: [options: number];
 }>();
 
@@ -50,28 +50,20 @@ const itemsPerPageOptions: Array<{ value: number; title: string }> = [
 
 const columns = [
   {
-    title: "",
-    key: "avatar",
+    title: "components.permissions.permissionsTable.role",
+    key: "role.name",
   },
   {
-    title: "components.users.usersTable.name",
+    title: "components.permissions.permissionsTable.name",
     key: "name",
   },
   {
-    title: "components.users.usersTable.email",
-    key: "email",
-  },
-  {
-    title: "components.users.usersTable.emailVerifiedAt",
-    key: "email_verified_at",
-  },
-  {
-    title: "components.users.usersTable.actions",
+    title: "components.permissions.permissionsTable.actions",
     key: "actions",
   },
 ];
 
-const handleFilters = (options: GridUserFilterType) => {
+const handleFilters = (options: GridPermissionFilterType) => {
   emit("handleFilters", options);
 };
 
@@ -86,7 +78,7 @@ const updatedOptions = (perPage: number) => {
     v-model:expanded="expandedItems"
     item-value="id"
     :headers="columns"
-    :items="users"
+    :items="permissions"
     :items-length="totalItems"
     :loading="loading"
     :items-per-page-options="itemsPerPageOptions"
@@ -105,27 +97,6 @@ const updatedOptions = (perPage: number) => {
         </template>
       </tr>
     </template>
-    <template v-slot:item.avatar="{ item }">
-      <v-avatar
-        v-if="item.avatar"
-        color="grey-darken-3"
-        image="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-      ></v-avatar>
-      <v-avatar
-        v-else
-        icon="las la-user"
-        color="secondary-lighten-3"
-      ></v-avatar>
-    </template>
-    <template v-slot:item.email_verified_at="{ item }">
-      <v-chip :color="item.email_verified_at ? 'primary' : 'secondary'"
-        >{{
-          item.email_verified_at
-            ? $t("components.users.usersTable.confirmed")
-            : $t("components.users.usersTable.unconfirmed")
-        }}
-      </v-chip>
-    </template>
     <template v-slot:item.actions="{}" class="size-sm">
       <v-btn
         color="info"
@@ -141,7 +112,6 @@ const updatedOptions = (perPage: number) => {
         density="comfortable"
         size="small"
       ></v-btn>
-      <v-btn color="accent" icon="las la-envelope" variant="text"></v-btn>
     </template>
   </v-data-table-server>
 </template>

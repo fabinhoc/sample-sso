@@ -40,6 +40,15 @@ const menus: MenuType[] = [
     icon: "las la-user-shield",
     routeName: "roles.index",
   },
+  {
+    label: {
+      key: "permission",
+      plural: 2,
+    },
+    url: "permissions.index",
+    icon: "las la-key",
+    routeName: "permissions.index",
+  },
 ];
 
 const logout = () => {

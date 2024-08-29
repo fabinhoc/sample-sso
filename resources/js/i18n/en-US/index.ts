@@ -2,12 +2,16 @@ export default {
   dashboard: "Dashboard",
   user: "User | Users",
   role: "Role | Roles",
+  permission: "Permission | Permissions",
   page: {
     users: {
       new: "New user",
     },
     roles: {
       new: "New role",
+    },
+    permissions: {
+      new: "New permission",
     },
   },
   components: {
@@ -36,6 +40,17 @@ export default {
       gridFilters: {
         name: "Name",
         application: "App",
+      },
+    },
+    permissions: {
+      permissionsTable: {
+        name: "Name",
+        actions: "Actions",
+        role: "Role",
+      },
+      gridFilters: {
+        name: "Name",
+        role: "Role",
       },
     },
   },
